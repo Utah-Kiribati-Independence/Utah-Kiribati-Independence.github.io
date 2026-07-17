@@ -8,8 +8,7 @@
       name="description"
       content="Mauri! We're planning a celebration of Kiribati independence in Utah, July 2027 — two days of culture, community, and joy. Get involved."
     />
-    <meta name="theme-color" content="#081226" />
-    <!-- Social sharing -->
+    <meta name="theme-color" content="#003F87" />
     <meta property="og:title" content="Kiribati Independence 2027 · Celebrated in Utah" />
     <meta
       property="og:description"
@@ -18,21 +17,25 @@
     <meta property="og:type" content="website" />
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23081226%22/><circle cx=%2250%22 cy=%2242%22 r=%2216%22 fill=%22%23F2C14E%22/><path d=%22M14 66 q18 -12 36 0 t36 0%22 fill=%22none%22 stroke=%22%23F3EFE6%22 stroke-width=%225%22/><path d=%22M14 78 q18 -12 36 0 t36 0%22 fill=%22none%22 stroke=%22%233FB6A8%22 stroke-width=%225%22/></svg>"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22><rect width=%2260%22 height=%2230%22 fill=%22%23CE1126%22/><rect y=%2230%22 width=%2260%22 height=%2230%22 fill=%22%23003F87%22/><circle cx=%2230%22 cy=%2230%22 r=%229%22 fill=%22%23FCD116%22/><path d=%22M4 44 q11 -6 22 0 t22 0 t22 0%22 fill=%22none%22 stroke=%22%23fff%22 stroke-width=%223%22/></svg>"
     />
     <style>
       :root {
-        --bg: #081226;
-        --surface: #0f2140;
-        --surface-2: #16305a;
-        --border: #22375f;
-        --ink: #f3efe6;
-        --ink-dim: #9fb0cc;
-        --ink-muted: #5e7096;
-        --sun: #f2c14e;
-        --sun-deep: #e9a72c;
-        --coral: #e4572e;
-        --sea: #3fb6a8;
+        /* Kiribati flag colours */
+        --red: #ce1126;
+        --red-deep: #a50e1f;
+        --gold: #fcd116;
+        --gold-deep: #e2b400;
+        --blue: #003f87;
+        --blue-line: #0a57a6;
+        --sea: #00224f; /* deep ocean base */
+        --white: #ffffff;
+        --ink: #f4f8ff;
+        --ink-dim: #b6c8e8;
+        --ink-muted: #7089b6;
+        --panel: rgba(255, 255, 255, 0.06);
+        --panel-2: rgba(255, 255, 255, 0.09);
+        --border: rgba(255, 255, 255, 0.15);
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
@@ -40,9 +43,10 @@
         font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         color: var(--ink);
         background:
-          radial-gradient(1200px 620px at 50% -12%, rgba(242, 193, 78, 0.14), transparent 60%),
-          radial-gradient(900px 500px at 90% 10%, rgba(63, 182, 168, 0.08), transparent 55%),
-          var(--bg);
+          radial-gradient(1100px 560px at 50% -8%, rgba(206, 17, 38, 0.28), transparent 60%),
+          radial-gradient(900px 620px at 50% 120%, rgba(10, 87, 166, 0.5), transparent 60%),
+          var(--sea);
+        background-attachment: fixed;
         -webkit-font-smoothing: antialiased;
         line-height: 1.55;
         min-height: 100%;
@@ -52,89 +56,130 @@
       .btn {
         display: inline-flex; align-items: center; gap: 8px;
         border-radius: 10px; padding: 12px 22px; font-weight: 700; font-size: 15px;
-        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
       }
       .btn:hover { transform: translateY(-1px); }
-      .btn-primary { background: var(--sun); color: #1a1206; }
-      .btn-primary:hover { background: var(--sun-deep); }
+      .btn-primary { background: var(--red); color: #fff; box-shadow: 0 6px 18px rgba(206, 17, 38, 0.35); }
+      .btn-primary:hover { background: var(--red-deep); }
+      .btn-gold { background: var(--gold); color: #3a2c00; }
+      .btn-gold:hover { background: var(--gold-deep); }
       .btn-ghost { border: 1px solid var(--border); color: var(--ink); }
-      .btn-ghost:hover { border-color: #34507f; }
+      .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.4); }
 
-      /* Header */
-      header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px);
-        background: rgba(8, 18, 38, 0.72); border-bottom: 1px solid rgba(34, 55, 95, 0.6); }
-      .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-      .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; letter-spacing: -0.01em; }
-      .brand .mark { width: 34px; height: 34px; }
-      .brand small { display: block; font-weight: 600; font-size: 11px; color: var(--ink-muted); letter-spacing: 0.02em; }
+      header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px);
+        background: rgba(0, 34, 79, 0.75); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+      .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+      .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 15px; letter-spacing: -0.01em; }
+      .brand .mark { width: 40px; height: 26px; border-radius: 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); flex: none; }
+      .brand small { display: block; font-weight: 600; font-size: 11px; color: var(--ink-muted); }
 
-      /* Hero */
-      .hero { padding: 76px 0 60px; text-align: center; }
-      .eyebrow { color: var(--sun); font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; font-size: 13px; }
-      .hero h1 { font-size: clamp(40px, 8vw, 84px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; margin-top: 14px; }
-      .hero h1 .year { color: var(--sun); }
+      .hero { padding: 54px 0 20px; text-align: center; }
+      .crest { width: 300px; max-width: 82vw; height: auto; margin: 0 auto 26px; display: block;
+        border-radius: 12px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45); }
+      .eyebrow { color: var(--gold); font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; font-size: 13px; }
+      .hero h1 { font-size: clamp(40px, 8vw, 82px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; margin-top: 14px; }
+      .hero h1 .year { color: var(--gold); }
       .hero .sub { font-size: clamp(19px, 3vw, 26px); font-weight: 600; color: var(--ink-dim); margin-top: 8px; }
       .hero p.lead { max-width: 620px; margin: 20px auto 0; color: var(--ink-dim); font-size: 17px; }
       .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
       .chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border);
-        background: rgba(22, 48, 90, 0.35); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink-dim); }
+        background: var(--panel); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink-dim); }
       .chip b { color: var(--ink); }
       .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
 
-      /* Sun motif */
-      .sunwrap { display: flex; justify-content: center; margin: 8px 0 -8px; }
+      /* white wavy divider — echoes the flag's ocean stripes */
+      .waves { display: block; width: 100%; height: 46px; margin-top: 34px; }
 
-      /* Sections */
-      section.block { padding: 56px 0; }
+      section.block { padding: 40px 0 56px; }
       .section-head { text-align: center; max-width: 640px; margin: 0 auto 34px; }
       .section-head h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -0.02em; }
       .section-head p { color: var(--ink-dim); margin-top: 10px; font-size: 16px; }
       .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-      .card { border: 1px solid var(--border); background: linear-gradient(180deg, rgba(15, 33, 64, 0.7), rgba(15, 33, 64, 0.25));
-        border-radius: 16px; padding: 24px; }
+      .card { border: 1px solid var(--border); background: var(--panel); border-radius: 16px; padding: 24px; border-top: 3px solid var(--accent, var(--gold)); }
       .card .ic { font-size: 26px; }
       .card h3 { margin-top: 12px; font-size: 19px; font-weight: 700; }
       .card p { margin-top: 8px; color: var(--ink-dim); font-size: 15px; }
 
-      .band { border: 1px solid var(--border); border-radius: 20px; padding: 40px 28px; text-align: center;
-        background: radial-gradient(600px 220px at 50% 0%, rgba(242, 193, 78, 0.1), transparent 70%), rgba(15, 33, 64, 0.5); }
+      .band { border-radius: 20px; padding: 44px 28px; text-align: center; overflow: hidden; position: relative;
+        background: linear-gradient(135deg, var(--red), var(--red-deep)); box-shadow: 0 14px 40px rgba(206, 17, 38, 0.28); }
       .band h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; }
-      .band p { color: var(--ink-dim); max-width: 560px; margin: 12px auto 0; }
+      .band h2 .g { color: var(--gold); }
+      .band p { color: #ffe4e7; max-width: 560px; margin: 12px auto 0; }
+      .band .sunbadge { position: absolute; right: -30px; top: -30px; width: 160px; height: 160px; opacity: 0.25; }
 
-      footer { border-top: 1px solid rgba(34, 55, 95, 0.6); padding: 30px 0; text-align: center; color: var(--ink-muted); font-size: 13px; margin-top: 30px; }
-      footer .flag { display: inline-flex; gap: 4px; margin-bottom: 10px; }
-      footer .flag span { width: 22px; height: 6px; border-radius: 2px; }
+      footer { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 28px 0 34px; text-align: center; color: var(--ink-muted); font-size: 13px; margin-top: 34px; }
+      footer .flagstripe { display: inline-flex; border-radius: 4px; overflow: hidden; margin-bottom: 12px; box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4); }
+      footer .flagstripe span { width: 26px; height: 8px; }
 
       @media (max-width: 720px) {
         .cards { grid-template-columns: 1fr; }
-        .hero { padding: 52px 0 42px; }
+        .hero { padding: 38px 0 14px; }
         .brand small { display: none; }
       }
     </style>
   </head>
-  <body>
+  <body id="top">
+    <!-- Reusable flag crest: red field + gold rising sun (17 rays) + frigatebird,
+         blue lower half with three white ocean waves. -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="kiflag" viewBox="0 0 360 180">
+          <rect width="360" height="90" fill="#CE1126" />
+          <rect y="90" width="360" height="90" fill="#003F87" />
+          <!-- three white ocean waves -->
+          <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round">
+            <path d="M0 112 q22 -12 45 0 t45 0 t45 0 t45 0 t45 0 t45 0 t45 0 t45 0" />
+            <path d="M0 136 q22 -12 45 0 t45 0 t45 0 t45 0 t45 0 t45 0 t45 0 t45 0" />
+            <path d="M0 160 q22 -12 45 0 t45 0 t45 0 t45 0 t45 0 t45 0 t45 0 t45 0" />
+          </g>
+          <!-- rising sun: disc on the horizon + 17 rays -->
+          <path d="M150 92 a30 30 0 0 1 60 0 Z" fill="#FCD116" />
+          <g stroke="#FCD116" stroke-width="3.4" stroke-linecap="round">
+            <line x1="150.0" y1="92.0" x2="128.0" y2="92.0" />
+            <line x1="150.6" y1="86.1" x2="129.0" y2="81.9" />
+            <line x1="152.3" y1="80.5" x2="132.0" y2="72.1" />
+            <line x1="155.1" y1="75.3" x2="136.8" y2="63.1" />
+            <line x1="158.8" y1="70.8" x2="143.2" y2="55.2" />
+            <line x1="163.3" y1="67.1" x2="151.1" y2="48.8" />
+            <line x1="168.5" y1="64.3" x2="160.1" y2="44.0" />
+            <line x1="174.1" y1="62.6" x2="169.9" y2="41.0" />
+            <line x1="180.0" y1="62.0" x2="180.0" y2="40.0" />
+            <line x1="185.9" y1="62.6" x2="190.1" y2="41.0" />
+            <line x1="191.5" y1="64.3" x2="199.9" y2="44.0" />
+            <line x1="196.7" y1="67.1" x2="208.9" y2="48.8" />
+            <line x1="201.2" y1="70.8" x2="216.8" y2="55.2" />
+            <line x1="204.9" y1="75.3" x2="223.2" y2="63.1" />
+            <line x1="207.7" y1="80.5" x2="228.0" y2="72.1" />
+            <line x1="209.4" y1="86.1" x2="231.0" y2="81.9" />
+            <line x1="210.0" y1="92.0" x2="232.0" y2="92.0" />
+          </g>
+          <!-- frigatebird (stylised, gold) -->
+          <path
+            fill="#FCD116"
+            d="M180 34
+               C166 40 150 40 132 33 C120 28 108 26 96 27
+               C112 33 124 40 140 45 C126 45 116 47 108 51
+               C126 52 150 50 168 47 L176 49 L172 60 L180 53 L188 60 L184 49 L192 47
+               C210 50 234 52 252 51 C244 47 234 45 220 45
+               C236 40 248 33 264 27 C252 26 240 28 228 33 C210 40 194 40 180 34 Z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
     <header>
       <div class="wrap nav">
         <a class="brand" href="#top">
-          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
-            <rect width="100" height="100" rx="22" fill="#0f2140" />
-            <circle cx="50" cy="40" r="15" fill="#F2C14E" />
-            <g stroke="#F2C14E" stroke-width="4" stroke-linecap="round">
-              <line x1="50" y1="14" x2="50" y2="6" /><line x1="72" y1="22" x2="78" y2="16" />
-              <line x1="28" y1="22" x2="22" y2="16" /><line x1="82" y1="40" x2="90" y2="40" />
-              <line x1="18" y1="40" x2="10" y2="40" />
-            </g>
-            <path d="M12 66 q19 -13 38 0 t38 0" fill="none" stroke="#F3EFE6" stroke-width="5" />
-            <path d="M12 80 q19 -13 38 0 t38 0" fill="none" stroke="#3FB6A8" stroke-width="5" />
-          </svg>
+          <svg class="mark" viewBox="0 0 360 180" preserveAspectRatio="xMidYMid slice"><use href="#kiflag" /></svg>
           <span>Kiribati Independence 2027<small>Celebrated in Utah</small></span>
         </a>
         <a class="btn btn-ghost" href="#involved">Get involved</a>
       </div>
     </header>
 
-    <main id="top">
+    <main>
       <section class="hero wrap">
+        <svg class="crest" viewBox="0 0 360 180" role="img" aria-label="Flag of Kiribati"><use href="#kiflag" /></svg>
         <p class="eyebrow">Mauri — Welcome</p>
         <h1>Kiribati Independence<br /><span class="year">2027</span></h1>
         <p class="sub">Celebrated in Utah</p>
@@ -153,6 +198,15 @@
         </div>
       </section>
 
+      <svg class="waves" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="4">
+          <path d="M0 20 q40 -16 80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0" />
+        </g>
+        <g fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="4">
+          <path d="M0 34 q40 -16 80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0 t80 0" />
+        </g>
+      </svg>
+
       <section class="block wrap" id="about">
         <div class="section-head">
           <h2>A celebration of home, held in Utah</h2>
@@ -162,17 +216,17 @@
           </p>
         </div>
         <div class="cards">
-          <div class="card">
+          <div class="card" style="--accent: var(--gold)">
             <div class="ic">🌺</div>
             <h3>Culture</h3>
             <p>Te mwaie dance, song, and the traditions of the islands — shared with the next generation and our neighbors.</p>
           </div>
-          <div class="card">
+          <div class="card" style="--accent: var(--white)">
             <div class="ic">🤝</div>
             <h3>Community</h3>
             <p>A gathering point for I-Kiribati families across Utah and beyond — a botaki to reconnect and belong.</p>
           </div>
-          <div class="card">
+          <div class="card" style="--accent: var(--red)">
             <div class="ic">🇰🇮</div>
             <h3>Independence</h3>
             <p>Honoring the freedom and heritage of Kiribati with a flag raising, an anthem, and pride in who we are.</p>
@@ -182,13 +236,14 @@
 
       <section class="block wrap" id="involved">
         <div class="band">
-          <h2>Help us make it happen</h2>
+          <svg class="sunbadge" viewBox="0 0 360 180" aria-hidden="true"><use href="#kiflag" /></svg>
+          <h2>Help us <span class="g">make it happen</span></h2>
           <p>
             This is a community effort, and it's just getting started. Whether you can help plan, perform,
             sponsor, or simply want to hear more as the date firms up — we'd love to hear from you.
           </p>
           <div class="cta">
-            <a class="btn btn-primary" href="mailto:joshua.tune@gmail.com?subject=Kiribati%20Independence%202027%20in%20Utah">Get in touch</a>
+            <a class="btn btn-gold" href="mailto:joshua.tune@gmail.com?subject=Kiribati%20Independence%202027%20in%20Utah">Get in touch</a>
           </div>
         </div>
       </section>
@@ -196,9 +251,9 @@
 
     <footer>
       <div class="wrap">
-        <div class="flag" aria-hidden="true">
-          <span style="background: #e4572e"></span><span style="background: #f2c14e"></span
-          ><span style="background: #3fb6a8"></span>
+        <div class="flagstripe" aria-hidden="true">
+          <span style="background: #ce1126"></span><span style="background: #fcd116"></span
+          ><span style="background: #003f87"></span><span style="background: #ffffff"></span>
         </div>
         <div>Kiribati Independence 2027 · Utah — a community planning effort.</div>
         <div style="margin-top: 6px; opacity: 0.7">Details are being planned and will be shared here as they're confirmed.</div>

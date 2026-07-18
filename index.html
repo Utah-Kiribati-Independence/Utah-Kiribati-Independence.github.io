@@ -29,6 +29,8 @@
         --red-deep: #a10e1e;
         --blue: #003f87;         /* flag blue */
         --blue-bright: #2f86e6;
+        --gold: #fcd116;         /* flag gold */
+        --gold-soft: #ffd94a;
         --base: #090c15;
         --panel: #0d1220;
         --ink: #f6f8fc;
@@ -43,8 +45,9 @@
         font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
         color: var(--ink);
         background:
-          radial-gradient(760px 520px at 22% -6%, rgba(206, 17, 38, 0.42), transparent 60%),
-          radial-gradient(720px 560px at 86% 30%, rgba(47, 134, 230, 0.22), transparent 62%),
+          radial-gradient(760px 520px at 20% -6%, rgba(206, 17, 38, 0.44), transparent 60%),
+          radial-gradient(520px 420px at 64% 2%, rgba(252, 209, 22, 0.14), transparent 60%),
+          radial-gradient(720px 560px at 88% 32%, rgba(47, 134, 230, 0.22), transparent 62%),
           radial-gradient(600px 500px at 50% 108%, rgba(0, 63, 135, 0.3), transparent 60%),
           var(--base);
         background-attachment: fixed;
@@ -101,13 +104,14 @@
       .card p { margin-top: 7px; color: var(--ink-dim); font-size: 14.5px; }
       .tint-red { background: rgba(246, 66, 90, 0.16); box-shadow: 0 0 0 1px rgba(246, 66, 90, 0.22) inset; }
       .tint-blue { background: rgba(47, 134, 230, 0.16); box-shadow: 0 0 0 1px rgba(47, 134, 230, 0.24) inset; }
+      .tint-gold { background: rgba(252, 209, 22, 0.16); box-shadow: 0 0 0 1px rgba(252, 209, 22, 0.3) inset; }
 
       /* CTA panel with gradient border */
       .cta-section { padding: 10px 0 84px; }
       .panel { position: relative; border-radius: 26px; background: linear-gradient(180deg, #10182b, #0b1120);
         padding: 56px 32px; text-align: center; overflow: hidden; }
       .panel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-        background: linear-gradient(120deg, var(--red), transparent 42%, var(--blue-bright));
+        background: linear-gradient(120deg, var(--red), var(--gold) 40%, transparent 55%, var(--blue-bright));
         -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
         -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
       .panel::after { content: ""; position: absolute; width: 340px; height: 340px; right: -80px; bottom: -160px;
@@ -146,7 +150,7 @@
         <div class="meta">
           <span><span class="d" style="background: var(--red-bright)"></span> July 2027</span>
           <span><span class="d" style="background: var(--blue-bright)"></span> Utah, USA</span>
-          <span><span class="d" style="background: var(--red-bright)"></span> Two days</span>
+          <span><span class="d" style="background: var(--gold)"></span> Two days</span>
         </div>
       </section>
 
@@ -163,7 +167,7 @@
             <p>Families together, near and far.</p>
           </div>
           <div class="card">
-            <div class="ic tint-red">🎉</div>
+            <div class="ic tint-gold">🎉</div>
             <h3>Independence</h3>
             <p>Honoring Kiribati's heritage.</p>
           </div>
@@ -182,7 +186,7 @@
     </main>
 
     <footer>
-      <div class="bar"><span style="background: var(--red)"></span><span style="background: var(--blue)"></span></div>
+      <div class="bar"><span style="background: var(--red)"></span><span style="background: var(--gold)"></span><span style="background: var(--blue)"></span></div>
       <div>Kiribati Independence 2027 · Utah</div>
     </footer>
   </body>

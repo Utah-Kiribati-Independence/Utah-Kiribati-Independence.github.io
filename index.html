@@ -20,87 +20,77 @@
     />
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22><rect width=%2260%22 height=%2260%22 rx=%2216%22 fill=%22%23CE1126%22/><rect x=%228%22 y=%2238%22 width=%2244%22 height=%228%22 rx=%224%22 fill=%22%23fff%22 opacity=%22.9%22/></svg>"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22><rect width=%2260%22 height=%2230%22 fill=%22%23CE1126%22/><rect y=%2230%22 width=%2260%22 height=%2230%22 fill=%22%23003F87%22/><circle cx=%2230%22 cy=%2230%22 r=%229%22 fill=%22%23FCD116%22/></svg>"
     />
     <style>
       :root {
-        --red: #ce1126;          /* flag red */
-        --red-bright: #f6425a;
-        --red-deep: #a10e1e;
-        --blue: #003f87;         /* flag blue */
-        --blue-bright: #2f86e6;
-        --gold: #fcd116;         /* flag gold */
-        --gold-soft: #ffd94a;
-        --base: #090c15;
-        --panel: #0d1220;
-        --ink: #f2ede4;          /* warm off-white (koi) */
-        --ink-dim: #9098ac;
-        --ink-muted: #5b6075;
-        --line: rgba(255, 255, 255, 0.09);
-        --line-2: rgba(255, 255, 255, 0.16);
+        --red: #ce1126; --red-bright: #f6425a; --red-deep: #a10e1e;
+        --blue: #003f87; --blue-bright: #2f86e6;
+        --gold: #fcd116; --gold-soft: #ffd94a;
+        --base: #090c15; --panel: #0d1220;
+        --ink: #f2ede4; --ink-dim: #9098ac; --ink-muted: #5b6075;
+        --line: rgba(255, 255, 255, 0.09); --line-2: rgba(255, 255, 255, 0.16);
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
       body {
         font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-        font-feature-settings: "cv11", "ss01", "ss03";
-        text-rendering: optimizeLegibility;
+        font-feature-settings: "cv11", "ss01", "ss03"; text-rendering: optimizeLegibility;
         color: var(--ink);
         background:
-          radial-gradient(760px 520px at 20% -6%, rgba(206, 17, 38, 0.44), transparent 60%),
-          radial-gradient(520px 420px at 64% 2%, rgba(252, 209, 22, 0.14), transparent 60%),
-          radial-gradient(720px 560px at 88% 32%, rgba(47, 134, 230, 0.22), transparent 62%),
-          radial-gradient(600px 500px at 50% 108%, rgba(0, 63, 135, 0.3), transparent 60%),
+          radial-gradient(760px 520px at 20% 96%, rgba(206, 17, 38, 0.28), transparent 60%),
+          radial-gradient(720px 560px at 88% 82%, rgba(47, 134, 230, 0.16), transparent 62%),
           var(--base);
-        background-attachment: fixed;
-        -webkit-font-smoothing: antialiased;
-        line-height: 1.55;
-        min-height: 100%;
-        letter-spacing: -0.01em;
+        background-attachment: fixed; -webkit-font-smoothing: antialiased; line-height: 1.55; min-height: 100%; letter-spacing: -0.01em;
       }
       a { color: inherit; text-decoration: none; }
       .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
       h1, h2, h3, .display { font-family: "Inter", ui-sans-serif, system-ui; font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; }
 
-      .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 12px;
-        padding: 13px 22px; font-weight: 600; font-size: 15px; letter-spacing: -0.01em;
-        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease; }
+      .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 12px; padding: 13px 22px;
+        font-weight: 600; font-size: 15px; letter-spacing: -0.01em; transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s; }
       .btn:hover { transform: translateY(-1px); }
       .btn-primary { color: #fff; background: linear-gradient(180deg, var(--red-bright), var(--red));
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 10px 26px rgba(206, 17, 38, 0.42); }
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 10px 26px rgba(206, 17, 38, 0.45); }
       .btn-primary:hover { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 12px 30px rgba(206, 17, 38, 0.55); }
-      .btn-glass { color: var(--ink); background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--line-2); backdrop-filter: blur(8px); }
-      .btn-glass:hover { background: rgba(255, 255, 255, 0.09); }
+      .btn-glass { color: var(--ink); background: rgba(255, 255, 255, 0.06); border: 1px solid var(--line-2); backdrop-filter: blur(8px); }
+      .btn-glass:hover { background: rgba(255, 255, 255, 0.11); }
 
-      /* Nav */
+      /* ---------- Flag hero ---------- */
+      .hero-section { position: relative; overflow: hidden; min-height: clamp(560px, 82vh, 760px); display: flex; flex-direction: column; }
+      .flag-hero { position: absolute; inset: 0; z-index: 0; }
+      .flag-hero svg.flag { width: 100%; height: 100%; display: block; }
+      .flag-hero .scrim { position: absolute; inset: 0; pointer-events: none;
+        background:
+          radial-gradient(96% 74% at 50% 46%, rgba(9, 12, 21, 0.12), rgba(9, 12, 21, 0.72) 92%),
+          linear-gradient(180deg, rgba(9, 12, 21, 0.66) 0%, rgba(9, 12, 21, 0.34) 34%, rgba(9, 12, 21, 0.62) 66%, var(--base) 100%); }
+
+      .hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; }
       .nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
       .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 15px; }
       .brand .tile { width: 32px; height: 32px; border-radius: 9px; flex: none; display: grid; place-items: center;
-        color: #fff; font-weight: 800; background: linear-gradient(150deg, var(--red-bright), var(--red-deep));
-        box-shadow: 0 4px 14px rgba(206, 17, 38, 0.45); }
+        color: #fff; font-weight: 800; background: linear-gradient(150deg, var(--red-bright), var(--red-deep)); box-shadow: 0 4px 14px rgba(206, 17, 38, 0.5); }
 
-      /* Hero */
-      .hero { text-align: center; padding: 66px 0 96px; }
+      .hero-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 0 64px; }
       .badge { display: inline-flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 500; color: var(--ink-dim);
-        border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03); border-radius: 999px; padding: 7px 15px; }
+        border: 1px solid var(--line-2); background: rgba(9, 12, 21, 0.5); backdrop-filter: blur(6px); border-radius: 999px; padding: 7px 15px; }
       .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red-bright); box-shadow: 0 0 10px var(--red-bright); }
-      .hero h1 { font-size: clamp(44px, 7vw, 72px); font-weight: 800; line-height: 1.02; margin-top: 24px; }
-      /* koi-style gradient-clipped accent line — flag gold → red (red-weighted) */
-      .hero h1 .yr { background: linear-gradient(115deg, var(--gold) 0%, var(--red-bright) 52%, var(--red) 100%);
+      .hero-content h1 { font-size: clamp(44px, 7vw, 74px); font-weight: 800; line-height: 1.02; margin-top: 24px;
+        text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5); }
+      .hero-content h1 .yr { background: linear-gradient(115deg, var(--gold) 0%, var(--red-bright) 52%, var(--red) 100%);
         -webkit-background-clip: text; background-clip: text; color: transparent; }
-      .hero .sub { margin: 20px auto 0; max-width: 520px; font-size: 18px; line-height: 1.6; color: var(--ink-dim); font-weight: 400; }
-      .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 34px; }
-      .meta { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; margin-top: 40px; color: var(--ink-muted); font-size: 14px; font-weight: 500; }
+      .hero-content .sub { margin: 20px auto 0; max-width: 520px; font-size: 18px; line-height: 1.6; color: #d7d2c8; font-weight: 400;
+        text-shadow: 0 1px 20px rgba(0, 0, 0, 0.6); }
+      .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+      .meta { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; margin-top: 34px; color: #b7bccb; font-size: 14px; font-weight: 500; }
       .meta span { display: inline-flex; align-items: center; gap: 8px; }
       .meta .d { width: 6px; height: 6px; border-radius: 50%; }
 
-      /* Feature cards */
-      .features { padding: 20px 0 70px; }
+      /* ---------- Cards ---------- */
+      .features { padding: 66px 0 70px; }
       .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
       .card { position: relative; border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
-        transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)); transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s; }
       .card:hover { transform: translateY(-4px); border-color: var(--line-2); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
       .card .ic { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; font-size: 22px; }
       .card h3 { font-size: 18px; font-weight: 700; margin-top: 18px; }
@@ -109,14 +99,12 @@
       .tint-blue { background: rgba(47, 134, 230, 0.16); box-shadow: 0 0 0 1px rgba(47, 134, 230, 0.24) inset; }
       .tint-gold { background: rgba(252, 209, 22, 0.16); box-shadow: 0 0 0 1px rgba(252, 209, 22, 0.3) inset; }
 
-      /* CTA panel with gradient border */
+      /* ---------- CTA panel ---------- */
       .cta-section { padding: 10px 0 84px; }
-      .panel { position: relative; border-radius: 26px; background: linear-gradient(180deg, #10182b, #0b1120);
-        padding: 56px 32px; text-align: center; overflow: hidden; }
+      .panel { position: relative; border-radius: 26px; background: linear-gradient(180deg, #10182b, #0b1120); padding: 56px 32px; text-align: center; overflow: hidden; }
       .panel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
         background: linear-gradient(120deg, var(--red), var(--gold) 40%, transparent 55%, var(--blue-bright));
-        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-        -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
       .panel::after { content: ""; position: absolute; width: 340px; height: 340px; right: -80px; bottom: -160px;
         background: radial-gradient(circle, rgba(47, 134, 230, 0.4), transparent 70%); pointer-events: none; }
       .panel h2 { position: relative; font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; }
@@ -129,51 +117,91 @@
 
       @media (max-width: 720px) {
         .cards { grid-template-columns: 1fr; }
-        .hero { padding: 40px 0 64px; }
+        .hero-content { padding: 24px 0 48px; }
       }
     </style>
   </head>
   <body id="top">
-    <div class="wrap">
-      <nav class="nav">
-        <a class="brand" href="#top"><span class="tile">K</span> Kiribati&nbsp;2027</a>
-        <a class="btn btn-glass" href="#involved">Get involved</a>
-      </nav>
-    </div>
+    <section class="hero-section">
+      <div class="flag-hero" aria-hidden="true">
+        <!-- Realistic waving Kiribati flag: cloth ripple (feDisplacementMap) +
+             fold shading (feDiffuseLighting), cropped close-up on sun + waves. -->
+        <svg class="flag" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="redF" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d81a2e" /><stop offset="1" stop-color="#a90f1d" />
+            </linearGradient>
+            <linearGradient id="blueF" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0a54a0" /><stop offset="1" stop-color="#00285a" />
+            </linearGradient>
+            <filter id="cloth" x="-15%" y="-15%" width="130%" height="130%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.008 0.015" numOctaves="3" seed="14" result="noise">
+                <animate attributeName="baseFrequency" dur="20s" values="0.008 0.015;0.010 0.018;0.008 0.015" repeatCount="indefinite" />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="19" xChannelSelector="R" yChannelSelector="G" result="disp" />
+              <feDiffuseLighting in="noise" surfaceScale="1.7" diffuseConstant="1.0" lighting-color="#ffffff" result="light">
+                <feDistantLight azimuth="235" elevation="60" />
+              </feDiffuseLighting>
+              <!-- lift the shadow floor so folds read as soft cloth, not muddy blotches -->
+              <feComponentTransfer in="light" result="lightSoft">
+                <feFuncR type="linear" slope="0.5" intercept="0.5" />
+                <feFuncG type="linear" slope="0.5" intercept="0.5" />
+                <feFuncB type="linear" slope="0.5" intercept="0.5" />
+              </feComponentTransfer>
+              <feComposite in="lightSoft" in2="disp" operator="in" result="litClip" />
+              <feBlend in="disp" in2="litClip" mode="multiply" />
+            </filter>
+          </defs>
+          <g filter="url(#cloth)">
+            <rect x="-40" y="-40" width="560" height="160" fill="url(#redF)" />
+            <rect x="-40" y="120" width="560" height="160" fill="url(#blueF)" />
+            <!-- white ocean waves -->
+            <g fill="none" stroke="#f6f8ff" stroke-width="10" stroke-linecap="round" opacity="0.96">
+              <path d="M-40 150 q30 -15 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" />
+              <path d="M-40 180 q30 -15 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" />
+              <path d="M-40 210 q30 -15 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" />
+            </g>
+            <!-- rising sun: disc + 17 rays -->
+            <path d="M196 122 A44 44 0 0 1 284 122 Z" fill="#fcd116" />
+            <g stroke="#fcd116" stroke-width="4.6" stroke-linecap="round"><line x1="196.0" y1="122.0" x2="166.0" y2="122.0"/><line x1="196.8" y1="113.4" x2="167.4" y2="107.6"/><line x1="199.3" y1="105.2" x2="171.6" y2="93.7"/><line x1="203.4" y1="97.6" x2="178.5" y2="80.9"/><line x1="208.9" y1="90.9" x2="187.7" y2="69.7"/><line x1="215.6" y1="85.4" x2="198.9" y2="60.5"/><line x1="223.2" y1="81.3" x2="211.7" y2="53.6"/><line x1="231.4" y1="78.8" x2="225.6" y2="49.4"/><line x1="240.0" y1="78.0" x2="240.0" y2="48.0"/><line x1="248.6" y1="78.8" x2="254.4" y2="49.4"/><line x1="256.8" y1="81.3" x2="268.3" y2="53.6"/><line x1="264.4" y1="85.4" x2="281.1" y2="60.5"/><line x1="271.1" y1="90.9" x2="292.3" y2="69.7"/><line x1="276.6" y1="97.6" x2="301.5" y2="80.9"/><line x1="280.7" y1="105.2" x2="308.4" y2="93.7"/><line x1="283.2" y1="113.4" x2="312.6" y2="107.6"/><line x1="284.0" y1="122.0" x2="314.0" y2="122.0"/></g>
+            <!-- frigatebird (scaled from the 360-space crest into 480-space) -->
+            <g transform="scale(1.3333)">
+              <path fill="#fcd116"
+                d="M180 34 C166 40 150 40 132 33 C120 28 108 26 96 27 C112 33 124 40 140 45 C126 45 116 47 108 51 C126 52 150 50 168 47 L176 49 L172 60 L180 53 L188 60 L184 49 L192 47 C210 50 234 52 252 51 C244 47 234 45 220 45 C236 40 248 33 264 27 C252 26 240 28 228 33 C210 40 194 40 180 34 Z" />
+            </g>
+          </g>
+        </svg>
+        <div class="scrim"></div>
+      </div>
+
+      <div class="wrap hero-inner">
+        <nav class="nav">
+          <a class="brand" href="#top"><span class="tile">K</span> Kiribati&nbsp;2027</a>
+          <a class="btn btn-glass" href="#involved">Get involved</a>
+        </nav>
+        <div class="hero-content">
+          <span class="badge"><span class="dot"></span> Mauri — a community celebration</span>
+          <h1>Kiribati Independence<br /><span class="yr">2027</span></h1>
+          <p class="sub">A two-day celebration of culture, community, and independence — held in Utah.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#involved">Get involved →</a>
+            <a class="btn btn-glass" href="#about">Learn more</a>
+          </div>
+          <div class="meta">
+            <span><span class="d" style="background: var(--red-bright)"></span> July 2027</span>
+            <span><span class="d" style="background: var(--blue-bright)"></span> Utah, USA</span>
+            <span><span class="d" style="background: var(--gold)"></span> Two days</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <main>
-      <section class="hero wrap">
-        <span class="badge"><span class="dot"></span> Mauri — a community celebration</span>
-        <h1>Kiribati Independence<br /><span class="yr">2027</span></h1>
-        <p class="sub">A two-day celebration of culture, community, and independence — held in Utah.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#involved">Get involved →</a>
-          <a class="btn btn-glass" href="#about">Learn more</a>
-        </div>
-        <div class="meta">
-          <span><span class="d" style="background: var(--red-bright)"></span> July 2027</span>
-          <span><span class="d" style="background: var(--blue-bright)"></span> Utah, USA</span>
-          <span><span class="d" style="background: var(--gold)"></span> Two days</span>
-        </div>
-      </section>
-
       <section class="features wrap" id="about">
         <div class="cards">
-          <div class="card">
-            <div class="ic tint-red">🌺</div>
-            <h3>Culture</h3>
-            <p>Dance, song, and island tradition.</p>
-          </div>
-          <div class="card">
-            <div class="ic tint-blue">🤝</div>
-            <h3>Community</h3>
-            <p>Families together, near and far.</p>
-          </div>
-          <div class="card">
-            <div class="ic tint-gold">🎉</div>
-            <h3>Independence</h3>
-            <p>Honoring Kiribati's heritage.</p>
-          </div>
+          <div class="card"><div class="ic tint-red">🌺</div><h3>Culture</h3><p>Dance, song, and island tradition.</p></div>
+          <div class="card"><div class="ic tint-blue">🤝</div><h3>Community</h3><p>Families together, near and far.</p></div>
+          <div class="card"><div class="ic tint-gold">🎉</div><h3>Independence</h3><p>Honoring Kiribati's heritage.</p></div>
         </div>
       </section>
 

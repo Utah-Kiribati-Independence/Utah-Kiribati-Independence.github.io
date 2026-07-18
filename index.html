@@ -86,8 +86,9 @@
         border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03); border-radius: 999px; padding: 7px 15px; }
       .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red-bright); box-shadow: 0 0 10px var(--red-bright); }
       .hero h1 { font-size: clamp(44px, 7vw, 72px); font-weight: 800; line-height: 1.02; margin-top: 24px; }
-      .hero h1 .yr { background: linear-gradient(120deg, var(--red-bright), var(--red)); -webkit-background-clip: text;
-        background-clip: text; color: transparent; }
+      /* koi-style gradient-clipped accent line — flag gold → red (red-weighted) */
+      .hero h1 .yr { background: linear-gradient(115deg, var(--gold) 0%, var(--red-bright) 52%, var(--red) 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent; }
       .hero .sub { margin: 20px auto 0; max-width: 520px; font-size: 18px; line-height: 1.6; color: var(--ink-dim); font-weight: 400; }
       .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 34px; }
       .meta { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; margin-top: 40px; color: var(--ink-muted); font-size: 14px; font-weight: 500; }
